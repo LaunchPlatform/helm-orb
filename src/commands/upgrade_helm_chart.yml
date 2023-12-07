@@ -124,7 +124,7 @@ steps:
   - install_helm_client:
       version: << parameters.helm_version >>
   - run:
-      name: Upgrade, update, or install chart
+      name: Upgrade, update, or install chart << parameters.chart >> as << parameters.release_name >>
       environment:
         HELM_STR_TIMEOUT: << parameters.timeout >>
         HELM_BOOL_ATOMIC: << parameters.atomic >>

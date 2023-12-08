@@ -55,7 +55,7 @@ jobs:
         description: Cluster name
       helm_version:
         type: string
-        default: "v3.8.2"
+        default: "v3.13.2"
         description: the helm client version to install. e.g. v3.0.0
       add_repo:
         type: string
@@ -103,7 +103,7 @@ jobs:
         description: Cluster name
       helm_version:
         type: string
-        default: "v3.8.2"
+        default: "v3.13.2"
         description: the helm client version to install. e.g. v3.0.0
       chart:
         type: string
@@ -142,7 +142,7 @@ jobs:
         description: Cluster name
       helm_version:
         type: string
-        default: "v3.8.2"
+        default: "v3.13.2"
         description: the helm client version to install. e.g. v3.0.0
       timeout:
         type: string
@@ -184,7 +184,7 @@ workflows:
           context: CPE_ORBS_AWS
       - install-helm-chart-on-eks-cluster:
           name: install-helm-chart-on-eks-cluster-helm4
-          helm_version: v3.8.2
+          helm_version: v3.13.2
           # test repo update
           cluster-name: ${AWS_RESOURCE_NAME_PREFIX}-helm4-eks
           add_repo: https://prometheus-community.github.io/helm-charts
@@ -196,7 +196,7 @@ workflows:
             - create-cluster-helm4
       - upgrade-helm-chart-on-eks-cluster:
           name: upgrade-helm-chart-on-eks-cluster-helm4
-          helm_version: v3.8.2
+          helm_version: v3.13.2
           cluster-name: ${AWS_RESOURCE_NAME_PREFIX}-helm4-eks
           debug: true
           context: CPE_ORBS_AWS
@@ -205,7 +205,7 @@ workflows:
             - install-helm-chart-on-eks-cluster-helm4
       - delete-helm-release-on-eks-cluster:
           name: delete-helm-release-on-eks-cluster-helm4
-          helm_version: v3.8.2
+          helm_version: v3.13.2
           cluster-name: ${AWS_RESOURCE_NAME_PREFIX}-helm4-eks
           context: CPE_ORBS_AWS
           filters: *filters
@@ -213,7 +213,7 @@ workflows:
             - upgrade-helm-chart-on-eks-cluster-helm4
       - install-helm-chart-on-eks-cluster:
           name: reinstall-helm-chart-on-eks-cluster-helm4
-          helm_version: v3.8.2
+          helm_version: v3.13.2
           # Test auto-generated release name
           release_name: prometheus-community
           add_repo: https://prometheus-community.github.io/helm-charts
@@ -224,7 +224,7 @@ workflows:
             - delete-helm-release-on-eks-cluster-helm4
       - delete-helm-release-on-eks-cluster:
           name: delete-helm-release-on-eks-cluster-again-helm4
-          helm_version: v3.8.2
+          helm_version: v3.13.2
           cluster-name: ${AWS_RESOURCE_NAME_PREFIX}-helm4-eks
           # test timeout
           timeout: "600s"
